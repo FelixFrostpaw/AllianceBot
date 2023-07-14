@@ -17,15 +17,13 @@ async def on_ready():
   except Exception as e:
     print(e)
 
-
-@bot.tree.command(name="ping")
-async def ping(interaction: discord.Interaction):
-  await interaction.response.send_message("pong!", ephemeral=True)
-
-
 @bot.tree.command(name="version")
 async def version(interaction: discord.Interaction):
   await interaction.response.send_message(__version__, ephemeral=True)
 
+@bot.tree.command(name="repeat")
+@app_commands.describe(thing_to_say = "What should I say?")
+async def repeat(interaction: discord.Interaction, thing_to_say: str):
+  await interaction.response.send_message(f"{interaction.user.name} said '{thing_to_say}'")
 
 bot.run(__discord_bot_token__)
