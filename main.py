@@ -7,7 +7,6 @@ from discord.ext import commands
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
-
 @bot.event
 async def on_ready():
   print("Starting Bot")
@@ -21,9 +20,12 @@ async def on_ready():
 async def version(interaction: discord.Interaction):
   await interaction.response.send_message(__version__, ephemeral=True)
 
-@bot.tree.command(name="repeat")
-@app_commands.describe(thing_to_say = "What should I say?")
-async def repeat(interaction: discord.Interaction, thing_to_say: str):
-  await interaction.response.send_message(f"{interaction.user.name} said '{thing_to_say}'")
+
+@bot.tree.command(name="register")
+@app_commands.describe(api_key="API Key")
+async def register(interaction: discord.Interaction, api_key: str):
+  api_key = api_key.strip()
+  message = f"{interaction.user.name} has registered with the API Key: '{api_key}'"
+  await interaction.response.send_message(message, ephemeral=True)
 
 bot.run(__discord_bot_token__)
