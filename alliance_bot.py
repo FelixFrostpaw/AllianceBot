@@ -1,4 +1,4 @@
-from version import version
+from version import __version__
 from secrets import required_api_key_name_string
 
 import discord
@@ -13,17 +13,17 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.event
 async def on_ready():
-  print("Starting Bot")
+  # print("Starting Bot")
   try:
     synced = await bot.tree.sync()
-    print(f"Synced {len(synced)} command(s)")
+    # print(f"Synced {len(synced)} command(s)")
   except Exception as e:
     print(e)
 
 
 @bot.tree.command(name="version")
 async def version_command(interaction: discord.Interaction):
-  await interaction.response.send_message(version, ephemeral=True)
+  await interaction.response.send_message(__version__, ephemeral=True)
 
 
 @bot.tree.command(name="register")
