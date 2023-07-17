@@ -20,12 +20,12 @@ async def gw2_get_call(api_key, endpoint):
       response = await client.get(endpoint, headers=headers)
       response.raise_for_status()
       parsed_response = json.loads(response.text)
-      return {"success": True, response: parsed_response}
+      return {"success": True, "response": parsed_response}
   except httpx.HTTPStatusError as err:
     # Let's specifically catch invalid token errors
     if err.response.status_code == UNAUTHORIZED_ERROR and err.response.text == INVALID_TOKEN_ERROR:
       parsed_response = json.loads(err.response.text)
-      return {"success": False, response: parsed_response}
+      return {"success": False, "response": INVALID_TOKEN_ERROR}
     else:
       raise err
 
