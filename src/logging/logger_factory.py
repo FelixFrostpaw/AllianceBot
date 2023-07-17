@@ -1,11 +1,11 @@
 import logging
-import src.configs.secrets as secrets
+from src.configs.configs import configs
 from logtail import LogtailHandler
 from src.logging.run_info_formatter import RunInfoFormatter
 
 
 def create_betterstack_handler():
-  betterstack_token = secrets.betterstack_token
+  betterstack_token = configs['betterstack_token']
   handler = LogtailHandler(source_token=betterstack_token)
   return handler
 
