@@ -1,12 +1,12 @@
 from version import __version__
-from secrets import required_api_key_name_string
+from src.configs.secrets import required_api_key_name_string
 
 import discord
 from discord import app_commands
 from discord.ext import commands
 
-import gw2api
-import gw2api_utils
+import src.gw2api.gw2api as gw2api
+import src.gw2api.gw2api_utils as gw2api_utils
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 

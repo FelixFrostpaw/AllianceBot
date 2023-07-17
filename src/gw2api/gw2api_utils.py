@@ -1,4 +1,4 @@
-from secrets import required_api_key_name_string
+from src.configs.secrets import required_api_key_name_string
 
 
 def valid_api_key(response):
