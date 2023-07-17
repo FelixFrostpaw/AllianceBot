@@ -1,5 +1,5 @@
 from version import __version__
-from src.configs.secrets import required_api_key_name_string
+from src.configs.configs import configs
 
 import discord
 from discord import app_commands
@@ -32,7 +32,7 @@ async def register(interaction: discord.Interaction, api_key: str):
   api_key = api_key.strip()
 
   invalid_key_message = f"""Invalid Key. 
-  A valid key must include the word "{required_api_key_name_string}" in its name, 
+  A valid key must include the word "{configs['required_api_key_name_string']}" in its name, 
   and have the following permissions enabled: account, characters, guilds, and progression."""
 
   response = await gw2api.token_info(api_key)

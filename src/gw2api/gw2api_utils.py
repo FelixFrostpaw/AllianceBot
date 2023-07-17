@@ -1,8 +1,9 @@
-from src.configs.secrets import required_api_key_name_string
+from src.configs.configs import configs
 
 
 def valid_api_key(response):
-  if required_api_key_name_string.lower() not in response["name"].lower():
+  if configs['required_api_key_name_string'].lower(
+  ) not in response["name"].lower():
     return False
 
   permissions_set = set(response["permissions"])
