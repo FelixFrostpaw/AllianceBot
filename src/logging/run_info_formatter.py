@@ -1,7 +1,8 @@
-from version import __version__
 import socket
-import secrets
 import logging
+
+from version import __version__
+from src.configs import secrets
 
 __hostname__ = socket.gethostname()
 

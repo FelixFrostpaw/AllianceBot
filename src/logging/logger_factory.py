@@ -1,7 +1,7 @@
 import logging
-import secrets
+import src.configs.secrets as secrets
 from logtail import LogtailHandler
-from run_info_formatter import RunInfoFormatter
+from src.logging.run_info_formatter import RunInfoFormatter
 
 
 def create_betterstack_handler():
